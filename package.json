@@ -3,22 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.11",
-    "@types/node": "11.11.6",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.3",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-scripts": "2.1.8",
-    "typescript": "3.3.4000"
+    "typescript": "^3.3.4000"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
     "tslint": "tslint src/**/*.ts{,x} --project tsconfig.json",
-    "tslint:fix": "tslint src/**/*.ts{,x} --project tsconfig.json --fix"
+    "tslint:fix": "tslint src/**/*.ts{,x} --project tsconfig.json --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +30,23 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@storybook/addon-actions": "^5.0.3",
+    "@storybook/addon-info": "^5.0.3",
+    "@storybook/addon-links": "^5.0.3",
+    "@storybook/addons": "^5.0.3",
+    "@storybook/cli": "^5.0.3",
+    "@storybook/core": "^5.0.3",
+    "@storybook/react": "^5.0.3",
+    "@storybook/theming": "^5.0.3",
+    "@storybook/ui": "^5.0.3",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.11.6",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
+    "@types/storybook__react": "^4.0.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
     "tslint": "^5.14.0",
     "tslint-config-airbnb": "^5.11.1"
   }
