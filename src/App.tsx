@@ -1,25 +1,80 @@
-import React, { Component } from 'react'
-import './App.css'
-import logo from './logo.svg'
+import { camelizeKeys } from 'humps'
+import React from 'react'
+import './app.sass'
+import { HeroCard } from './components'
 
-class App extends Component {
+type Hero = {
+  id: string,
+  name: string,
+  imageCardBackgroundUrl: string,
+  imageSplashUrl: string,
+  imagePortraitUrl: string,
+}
+
+interface IProps {}
+
+interface IState {
+  heroes: Hero[],
+  loading: boolean,
+}
+
+class App extends React.Component<IProps, IState> {
+  endOfHeroes = false
+  page = 1
+  perPage = 10
+
+  constructor(props: IProps) {
+    super(props)
+
+    this.state = {
+      heroes: [],
+      loading: false,
+    }
+  }
+
+  componentDidMount() {
+    this.fetchHeroes()
+    document.addEventListener('scroll', () => this.handleScroll())
+  }
+
+  handleScroll() {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement
+
+    if (scrollTop + clientHeight > scrollHeight - 200) {
+      this.fetchHeroes()
+    }
+  }
+
+  fetchHeroes() {
+    const { heroes, loading } = this.state
+
+    if (loading || this.endOfHeroes) { return }
+
+    this.setState({ loading: true })
+    fetch(`https://overwatch-heroes-api.herokuapp.com/heros?page=${this.page}&per_page=${this.perPage}`)
+      .then(async (response) => {
+        const json = await response.json()
+
+        this.endOfHeroes = json.length < 1
+        this.page += 1
+        this.setState({
+          heroes: [
+            ...heroes,
+            ...camelizeKeys(json) as Hero[],
+          ],
+          loading: false,
+        })
+      })
+  }
+
   render() {
+    const { heroes, loading } = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        {heroes.map(hero => (
+          <HeroCard key={hero.id} {...hero} />
+        ))}
+        {loading && <p>Loading...</p>}
       </div>
     )
   }
