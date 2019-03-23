@@ -1,7 +1,7 @@
 import { camelizeKeys } from 'humps'
 import React from 'react'
-import './app.sass'
-import { HeroCard } from './components'
+import { HeroCard } from '../components'
+import './styles.sass'
 
 type Hero = {
   id: string,
