@@ -1,0 +1,25 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "jsRules": {},
+  "rules": {
+    "align": [true, "parameters", "statements"],
+    "curly": true,
+    "eofline": true,
+    "import-name": false,
+    "max-line-length": [true, 180],
+    "no-var-keyword": true,
+    "object-literal-sort-keys": [
+      true,
+      "locale-compare",
+      "shorthand-first"
+    ],
+    "ordered-imports": true,
+    "prefer-const": true,
+    "semicolon": [true, "never"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  },
+  "rulesDirectory": []
+}

@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tslint": "tslint src/**/*.ts{,x} --project tsconfig.json",
+    "tslint:fix": "tslint src/**/*.ts{,x} --project tsconfig.json --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +28,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1"
+  }
 }
