@@ -15,6 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "now-build": "react-scripts build",
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "tslint": "tslint src/**/*.ts{,x} --project tsconfig.json",
